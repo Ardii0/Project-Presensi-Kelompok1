@@ -1,58 +1,28 @@
 <template>
   <div class="app">
     <div class="border2">
-      <h2>Tabel Statistik Mahasiswa</h2>
-      <table>
+      <h2>Tabel Statistik Mahasiswa {{ absens.username }}</h2>
+      <table v-if="absens.role === 'mahasiswa' || absens.role === 'admin'">
         <thead>
           <tr>
             <th>No</th>
-            <th>Nama Mahasiswa</th>
             <th>Tanggal Kuliah</th>
             <th>Absen</th>
-            <th>Gambar</th>
-            <th>Aksi</th>
           </tr>
         </thead>
-        <tbody v-for="user in info" :key="user.id">
+        <tbody v-for="(mahasiswa, index) in absens.absen" :key="index">
           <tr>
-            <td>{{ user.id + 1 }}</td>
-            <td>{{ user.nama }}</td>
-            <td>{{ user.tanggal }}</td>
-            <td>{{ user.picked }}</td>
-            <td>
-              <img :src="user.gambar" height="100px" />
-            </td>
-            <td>
-              <button
-                style="
-                  background-color: green;
-                  color: white;
-                  width: 60px;
-                  padding: 5px;
-                  border: 1px solid white;
-                "
-                @click="edit(user)"
-              >
-                Edit</button
-              ><br />
-              <button
-                style="
-                  background-color: red;
-                  color: white;
-                  width: 60px;
-                  padding: 5px;
-                  border: 1px solid white;
-                "
-                @click="del(user)"
-              >
-                Delete
-              </button>
+            <td>{{ mahasiswa.id }}</td>
+            <td>{{ mahasiswa.tanggal }}</td>
+            <td>{{ mahasiswa.picked }}</td>
+            <td v-if="absens.role === 'dosen' || absens.role === 'admin'">
+              {{ mahasiswa.picked2 }}
             </td>
           </tr>
         </tbody>
       </table>
       <br />
-      <p>Showing 1 to 1 of 1 entries</p>
+      <p>presentase {{ presentase }}</p>
     </div>
   </div>
 </template>
@@ -71,14 +41,35 @@ export default {
         gambar: "",
       },
       info: "",
+      presentase: "",
       updateSubmit: false,
     };
   },
   mounted() {
     this.load();
   },
+  computed: {
+    absens() {
+      return JSON.parse(sessionStorage.getItem("USER_DATA"));
+    },
+  },
   methods: {
+    daysInMonth(month, year) {
+      return new Date(year, month, 0).getDate();
+    },
     load() {
+      const kalender = new Date();
+      this.presentase =
+        Math.floor(
+          (this.absens.absen.length /
+            new Date(
+              kalender.getFullYear(),
+              kalender.getMonth(),
+              0
+            ).getDate()) *
+            100
+        ) + "%";
+
       axios
         .get("http://localhost:3000/info")
         .then((res) => {
@@ -87,6 +78,10 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    presntasiSiswa() {
+      // const data = this.absens()
+      // this.presentase =
     },
     add() {
       axios.post("http://localhost:3000/info/", this.form).then((res) => {

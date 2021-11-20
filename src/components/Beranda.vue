@@ -5,8 +5,8 @@
         <p>
           <b style="font-size: 30px">KAMPUS BINUSA</b><br />
           Jalan Lingkar Boulevar Blok WA No.1 Summarecon Bekasi Kel,
-          RT.006/RW.003, Marga Mulya, Kec. Bekasi Utara, Kota Bekasi, Jawa Barat
-          17142
+          RT.006/RW.003, <br />
+          Marga Mulya, Kec. Bekasi Utara, Kota Bekasi, Jawa Barat 17142
         </p>
         <br />
         <div
@@ -32,24 +32,52 @@
                 height="500px"
                 class="d-block w-100"
               />
+              <div class="carousel-caption d-none d-md-block">
+                <h4>Binus University</h4>
+                <p>
+                  Universitas Bina Nusantara adalah salah satu universitas
+                  swasta Indonesia. Universitas ini bernaung di bawah lembaga
+                  pendidikan Bina Nusantara.
+                </p>
+              </div>
             </div>
             <div class="carousel-item">
               <img
-                src="https://socs.binus.ac.id/files/2018/07/WhatsApp-Image-2018-07-21-at-11.20.59.jpeg"
+                src="https://bulc.binus.ac.id/palembang/wp-content/uploads/sites/5/2021/03/PSX_20210309_095734.jpg"
                 alt="Second slide"
                 width="770px"
                 height="500px"
                 class="d-block w-100"
               />
+              <div class="carousel-caption d-none d-md-block">
+                <h4>Binus University</h4>
+                <p>
+                  Universitas Bina Nusantara menawarkan perkuliahan sarjana
+                  dengan satu gelar dan program ganda di mana mahasiswa akan
+                  memperoleh dua gelar sarjana dari sekolah atau fakultas yang
+                  berbeda. Tingkat sarjana memiliki 3 fakultas dan 4 sekolah.
+                </p>
+              </div>
             </div>
             <div class="carousel-item">
               <img
-                src="https://balitsa.litbang.pertanian.go.id/ind/images/Screenshot_4.png"
+                src="https://docplayer.info/docs-images/106/173122244/images/23-0.jpg"
                 alt="Third slide"
                 width="770px"
                 height="500px"
                 class="d-block w-100"
               />
+              <div class="carousel-caption d-none d-md-block">
+                <h4>Binus University</h4>
+                <p>
+                  Universitas Bina Nusantara menawarkan perkuliahan magister
+                  dengan satu gelar dan program ganda di mana mahasiswa akan
+                  memperoleh dua gelar magister, satu dari Universitas Bina
+                  Nusantara dan satunya lagi dari Universitas Macquarie.
+                  Mahasiswa dapat mengkombinasikan program kuliah yang
+                  diinginkannya. Tingkat magister memiliki 3 sekolah.
+                </p>
+              </div>
             </div>
           </div>
           <a
@@ -135,7 +163,8 @@
         <hr />
         <p>
           <b>Visi:</b><br />
-          "Kampus Binusa Menjadi Universitas Riset yang Unggul".
+          "A World Class University in continuous pursuit of innovation and
+          enterprise."
         </p>
         <p><b>Misi:</b></p>
         <ol type="1">
@@ -157,11 +186,12 @@
             kebijakan dan teknologi yang berhasil guna dan berdaya guna dengan
             mengedepankan budaya dan sumber daya lokal.
           </li>
-          <!-- <li>
+          <br />
+          <li>
             Mengembangkan profesionalitas, kapabilitas, akuntabilitas dalam tata
             kelola universitas yang baik serta kemandirian penyelenggaraan
             perguruan tinggi.
-          </li> -->
+          </li>
         </ol>
       </div>
 
@@ -178,12 +208,9 @@
           <li>Studi/Proyek Independen</li>
           <li>Membangun Desa/Kuliah Kerja Nyata Tematik</li>
         </ul>
+        <br /><br />
       </div>
     </div>
-
-    <!-- <div class="footer">
-      <h1>Footer</h1>
-    </div> -->
   </div>
 </template>
 

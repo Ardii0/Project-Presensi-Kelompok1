@@ -1,44 +1,28 @@
 <template>
-  <div class="all">
-    <br />
-    <div class="pr">
-      <div class="border1 row">
-        <h2>Form Presensi Mahasiswa</h2>
-
-        <form @submit.prevent="add">
-          <input type="hidden" v-model="form.id" />
-          <label for=""><b> Tanggal Kuliah : </b></label><br />
-          <input
-            required
-            type="date"
-            v-model="form.tanggal"
-            placeholder="Masukkan Tanggal"
-          /><br /><br />
-          <label for=""><b> Absen : </b></label><br />
-          <div id="app">
-            <div id="m1">
-              <input
-                type="radio"
-                id="Hadir"
-                value="Hadir"
-                v-model="form.picked"
-              />
-              <label style="padding-left: 640px" for="">Hadir</label>
-              <br />
-            </div>
-          </div>
-          <br />
-          <button type="submit" v-show="!updateSubmit" style="margin: auto">
-            <b> Add </b>
-          </button>
-          <!-- jika tidak update maka tombol update tidak muncul -->
-          <button type="button" v-show="updateSubmit" @click="update(form)">
-            <b> Update </b>
-          </button>
-          <!-- jika tombol edit di klik maka tombol add akan berubah menjadi update -->
-        </form>
-        <br />
-      </div>
+  <div class="app">
+    <div class="border2">
+      <h2>Tabel Statistik Mahasiswa {{ absens.username }}</h2>
+      <table v-if="absens.role === 'mahasiswa' || absens.role === 'admin'">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Tanggal Kuliah</th>
+            <th>Absen</th>
+          </tr>
+        </thead>
+        <tbody v-for="(mahasiswa, index) in absens.absen" :key="index">
+          <tr>
+            <td>{{ mahasiswa.id }}</td>
+            <td>{{ mahasiswa.tanggal }}</td>
+            <td>{{ mahasiswa.picked }}</td>
+            <td v-if="absens.role === 'dosen' || absens.role === 'admin'">
+              {{ mahasiswa.picked2 }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+      <p>presentase {{ presentase }}</p>
     </div>
   </div>
 </template>
@@ -54,10 +38,10 @@ export default {
         nama: "",
         tanggal: "",
         picked: "",
-        picked2: "",
         gambar: "",
       },
       info: "",
+      presentase: "",
       updateSubmit: false,
     };
   },
@@ -65,34 +49,49 @@ export default {
     this.load();
   },
   computed: {
-    userAbse() {
+    absens() {
       return JSON.parse(sessionStorage.getItem("USER_DATA"));
     },
   },
   methods: {
+    daysInMonth(month, year) {
+      return new Date(year, month, 0).getDate();
+    },
     load() {
-      this.form.nama = this.userAbse.username;
+      const kalender = new Date();
+      this.presentase =
+        Math.floor(
+          (this.absens.absen.length /
+            new Date(
+              kalender.getFullYear(),
+              kalender.getMonth(),
+              0
+            ).getDate()) *
+            100
+        ) + "%";
+
+      axios
+        .get("http://localhost:3000/info")
+        .then((res) => {
+          this.info = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    presntasiSiswa() {
+      // const data = this.absens()
+      // this.presentase =
     },
     add() {
-      let absens = this.userAbse.absen;
-      absens.push({
-        id: absens.length + 1,
-        tanggal: this.form.tanggal,
-        picked: this.form.picked,
-        gambar: this.form.gambar,
+      axios.post("http://localhost:3000/info/", this.form).then((res) => {
+        this.load();
+        (this.form.id = ""),
+          (this.form.nama = ""),
+          (this.form.tanggal = ""),
+          (this.form.picked = ""),
+          (this.form.gambar = "");
       });
-      axios
-        .put("http://localhost:3000/users/" + this.userAbse.id, {
-          username: this.form.nama,
-          password: this.userAbse.password,
-          role: this.userAbse.role,
-          absen: absens,
-        })
-        .then((res) => {
-          var convertToString = JSON.stringify(res.data);
-          sessionStorage.setItem("USER_DATA", convertToString);
-          this.$router.push("/StatistikMahasiswa");
-        });
     },
     edit(user) {
       this.updateSubmit = true;
@@ -134,22 +133,22 @@ export default {
 };
 </script>
 
-<style scoped>
-.all {
+<style>
+.app {
   border: 1px solid black none;
   /* background-color: rgb(97, 97, 97); */
-  /* height: 1073px; */
+  height: 1073px;
   /* color: white; */
 }
 /* .pr {
   display: flex;
-} */
+}
 .border1 {
-  width: 100%;
+  width: 30%;
   padding: 10px;
   background-color: none;
-}
-/* .border2 {
+} */
+.border2 {
   width: 40%;
   padding: 10px;
   margin-left: 30px;
@@ -158,7 +157,7 @@ table {
   text-align: center;
   border: 1px solid white;
   padding: 20px;
-  width: 750px;
+  width: 1270px;
   border-collapse: collapse;
   background-color: white;
 }
@@ -166,12 +165,13 @@ th {
   border: 1px solid white;
   height: 70px;
   background-color: #333;
+  color: white;
 }
 td {
   border: 1px solid black none;
   text-align: center;
   color: black;
-} */
+}
 input,
 select {
   width: 100%;
@@ -184,7 +184,7 @@ select {
 }
 button[type="submit"] {
   width: 100%;
-  background-color: silver;
+  background-color: lightskyblue;
   color: black;
   padding: 14px 20px;
   margin: 8px 0;

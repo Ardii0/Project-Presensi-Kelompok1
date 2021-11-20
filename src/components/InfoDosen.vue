@@ -12,11 +12,18 @@
           >Presensi</a
         >
         <a
-          href="/StatistikDosen"
+          href="/KehadiranMahasiswa"
           style="width: 200px"
           type="button"
           class="btn btn-outline-dark"
-          >Statistik</a
+          >Kehadiran Mahasiwa</a
+        >
+        <a
+          href="/StatistikDosen"
+          style="width: 200px"
+          type="button"
+          class="btn btn-outline-secondary"
+          >Rekap Dosen</a
         >
       </div>
     </center>

@@ -4,17 +4,40 @@
       <p class="tulisan_login">Silahkan Registrasi</p>
       <br />
       <form>
-        <label>Username</label>
+        <label>Nama Lengkap</label>
         <input
+          required
           type="text"
-          name="username"
+          name="Nama Lengkap"
           v-model="username"
           class="form_login"
-          placeholder="Username atau email .."
+          placeholder="Username.."
         />
         <br />
+        <label>NISN</label>
+        <input
+          required
+          type="text"
+          name="nisn"
+          v-model="nisn"
+          class="form_login"
+          placeholder="Masukan NISN.."
+        />
+        <br />
+        <label>Email</label>
+        <input
+          required
+          type="text"
+          name="email"
+          v-model="email"
+          class="form_login"
+          placeholder="Masukan Email.."
+        />
+        <br />
+
         <label>Password</label>
         <input
+          required
           type="password"
           name="password"
           v-model="password"
@@ -31,7 +54,7 @@
             padding-top: 10px;
             margin-left: 40px;
             margin-right: 40px;
-            border-radius: 10px;
+            border-radius: 15px;
             color: white;
           "
         >
@@ -47,10 +70,12 @@
 <script >
 import axios from "axios";
 export default {
-  name: "Registrasi",
+  name: "Register",
   data() {
     return {
       username: "",
+      nisn: "",
+      email: "",
       password: "",
     };
   },
@@ -58,8 +83,11 @@ export default {
     async login() {
       const payload = {
         username: this.username,
+        nisn: this.nisn,
+        email: this.email,
         password: this.password,
-        role: "siswa",
+
+        role: "mahasiswa",
       };
       const registrasi = await axios.post(
         "http://localhost:3000/users",
@@ -67,7 +95,7 @@ export default {
       );
       var convertToString = JSON.stringify(registrasi.data);
       sessionStorage.setItem("USER_DATA", convertToString);
-      this.$router.push("/link");
+      this.$router.push("/");
     },
   },
 };
@@ -95,6 +123,7 @@ h1 {
   margin: 80px auto;
   padding: 30px 20px;
   margin-top: 0px;
+  border-radius: 15px;
 }
 
 label {

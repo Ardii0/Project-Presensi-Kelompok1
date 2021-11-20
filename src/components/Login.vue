@@ -5,6 +5,7 @@
 
       <label>Username</label>
       <input
+        required
         type="text"
         name="username"
         v-model="form.username"
@@ -14,6 +15,7 @@
 
       <label>Password</label>
       <input
+        required
         type="password"
         name="password"
         v-model="form.password"
@@ -30,7 +32,7 @@
           padding-top: 10px;
           margin-left: 40px;
           margin-right: 40px;
-          border-radius: 10px;
+          border-radius: 15px;
           color: white;
         "
       >
@@ -102,6 +104,7 @@ h1 {
   margin: 80px auto;
   padding: 30px 20px;
   margin-top: 0px;
+  border-radius: 15px;
 }
 
 label {
@@ -118,7 +121,7 @@ label {
 }
 
 .tombol_login {
-  background: #2e2e2e;
+  background: silver;
   color: white;
   font-size: 11pt;
   width: 100%;

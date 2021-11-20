@@ -1,54 +1,138 @@
 {
   "users": [
     {
-      "id": 1,
       "username": "admin",
       "password": "123",
-      "role": "admin"
+      "role": "admin",
+      "absen": [
+        {
+          "id": 1,
+          "tanggal": "2021-11-06",
+          "picked": "Hadir",
+          "mali": "semester satu"
+        },
+        {
+          "id": 2,
+          "tanggal": "2021-11-06",
+          "picked": "Hadir",
+          "mali": "semester 1"
+        },
+        {
+          "id": 3,
+          "tanggal": "0003-02-01",
+          "picked": "Hadir",
+          "mali": "Death"
+        },
+        {
+          "id": 4,
+          "tanggal": "0003-02-01",
+          "picked": "Hadir",
+          "mali": "Indo"
+        },
+        {
+          "id": 5,
+          "tanggal": "2021-12-21",
+          "picked": "Hadir",
+          "gambar": "",
+          "mali": "dvzsfdves"
+        }
+      ],
+      "id": 1
     },
     {
-      "id": 2,
       "username": "mahasiswa",
       "password": "1234",
-      "role": "mahasiswa"
+      "role": "mahasiswa",
+      "absen": [
+        {
+          "id": 1,
+          "tanggal": "2021-11-06",
+          "picked": "Hadir",
+          "picked2": "Hadir",
+          "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqLN9iXUmU2gUkxAsUKIPm6qv8dQkT5-j4Xg&usqp=CAU"
+        },
+        {
+          "id": 2,
+          "tanggal": "2021-11-13",
+          "picked": "Hadir",
+          "picked2": "Hadir",
+          "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTimytLqspa_vDJ8olJRoWyFqrtpqICIIM2vg&usqp=CAU"
+        },
+        {
+          "id": 3,
+          "tanggal": "2021-11-26",
+          "picked": "Hadir",
+          "gambar": "awds"
+        },
+        {
+          "id": 4,
+          "tanggal": "0031-12-23",
+          "picked": "Hadir",
+          "gambar": "ad"
+        },
+        {
+          "id": 5,
+          "tanggal": "2021-11-23",
+          "picked": "Hadir",
+          "gambar": "gfde"
+        }
+      ],
+      "id": 2
     },
     {
-      "id": 3,
       "username": "dosen",
-      "password": "sayapalingbenar",
-      "role": "dosen"
-    }
-  ],
-  "infoMahasiswa": [
-    {
-      "id": 0,
-      "nama": "Alysa Marya",
-      "tanggal": "2021-11-06",
-      "picked": "Hadir",
-      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqLN9iXUmU2gUkxAsUKIPm6qv8dQkT5-j4Xg&usqp=CAU"
+      "password": "12345",
+      "role": "dosen",
+      "absen": [
+        {
+          "id": 1,
+          "tanggal": "2021-11-06",
+          "picked": "Hadir",
+          "mali": "semester satu"
+        },
+        {
+          "id": 2,
+          "tanggal": "2021-11-06",
+          "picked": "Hadir",
+          "mali": "semester 1"
+        },
+        {
+          "id": 3,
+          "tanggal": "0003-02-01",
+          "picked": "Hadir",
+          "mali": "Death"
+        },
+        {
+          "id": 4,
+          "tanggal": "0003-02-01",
+          "picked": "Hadir",
+          "mali": "Indo"
+        },
+        {
+          "id": 5,
+          "tanggal": "2021-12-21",
+          "picked": "Hadir",
+          "gambar": "",
+          "mali": "dvzsfdves"
+        }
+      ],
+      "id": 3
     },
     {
-      "id": 1,
-      "nama": "Nisa Safina",
-      "tanggal": "2021-11-13",
-      "picked": "Hadir",
-      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTimytLqspa_vDJ8olJRoWyFqrtpqICIIM2vg&usqp=CAU"
-    }
-  ],
-  "infoDosen": [
-    {
-      "id": 0,
-      "nama": "Alysa Marya",
-      "tanggal": "2021-11-06",
-      "picked": "Hadir",
-      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqLN9iXUmU2gUkxAsUKIPm6qv8dQkT5-j4Xg&usqp=CAU"
+      "username": "",
+      "nisn": "",
+      "email": "",
+      "password": "",
+      "role": "mahasiswa",
+      "id": 4
     },
     {
-      "id": 1,
-      "nama": "Nisa Safina",
-      "tanggal": "2021-11-13",
-      "picked": "Hadir",
-      "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTimytLqspa_vDJ8olJRoWyFqrtpqICIIM2vg&usqp=CAU"
+      "username": "Mala",
+      "nisn": "3515163",
+      "email": "fzats@gmail.com",
+      "password": "999",
+      "role": "mahasiswa",
+      "id": 5
     }
   ]
 }

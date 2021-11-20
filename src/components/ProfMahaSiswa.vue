@@ -79,7 +79,7 @@ export default {
   display: flex;
 }
 .all {
-  border: 1px solid black;
+  border: 1px solid none;
   width: 345px;
   margin: auto;
 }

@@ -37,12 +37,23 @@
               style="right: 0"
             >
               <a
+                v-if="roles === 'mahasiswa'"
                 href="/InfoMahasiswa"
                 class="w3-bar-item w3-button"
                 >Mahasiswa</a
               >
-              <a href="/InfoDosen" class="w3-bar-item w3-button">Dosen</a>
-              <a href="/InfoAdmin" class="w3-bar-item w3-button">Admin</a>
+              <a
+                v-if="roles === 'dosen'"
+                href="/InfoDosen"
+                class="w3-bar-item w3-button"
+                >Dosen</a
+              >
+              <a
+                v-if="roles === 'admin'"
+                href="/InfoAdmin"
+                class="w3-bar-item w3-button"
+                >Admin</a
+              >
             </div>
             <div class="w3-clear"></div>
           </div>
@@ -55,11 +66,24 @@
           <div class="w3-dropdown-hover">
             <button class="w3-button" v-if="logout !== null">Profile</button>
             <div class="w3-dropdown-content w3-bar-block w3-border">
-              <a href="/ProfMahaSiswa" class="w3-bar-item w3-button"
+              <a
+                v-if="roles === 'mahasiswa'"
+                href="/ProfMahaSiswa"
+                class="w3-bar-item w3-button"
                 >Mahasiswa</a
               >
-              <a href="/ProfDosen" class="w3-bar-item w3-button">Dosen</a>
-              <a href="/ProfAdmin" class="w3-bar-item w3-button">Admin</a>
+              <a
+                v-if="roles === 'dosen'"
+                href="/ProfDosen"
+                class="w3-bar-item w3-button"
+                >Dosen</a
+              >
+              <a
+                v-if="roles === 'admin'"
+                href="/ProfAdmin"
+                class="w3-bar-item w3-button"
+                >Admin</a
+              >
             </div>
           </div>
         </ul>
@@ -86,8 +110,8 @@
 
     <router-view></router-view>
 
-    <div class="footer-clean">
-      <footer>
+    <footer>
+      <div class="footer-clean">
         <div class="footer">
           <a href="/">
             <img
@@ -106,19 +130,25 @@
               </ul>
             </div>
             <div class="col-sm-4 col-md-3 item">
-              <h3>Informasi Perkuliahan</h3>
+              <h3>Created By:</h3>
               <ul>
-                <li><a href="/InfoMahasiswa">Mahasiswa</a></li>
-                <li><a href="/InfoDosen">Dosen</a></li>
-                <li><a href="/InfoAdmin">Admin</a></li>
-              </ul>
-            </div>
-            <div class="col-sm-4 col-md-3 item">
-              <h3>Profile</h3>
-              <ul>
-                <li><a href="#">Mahasiswa</a></li>
-                <li><a href="#">Dosen</a></li>
-                <li><a href="#">Admin</a></li>
+                <li>
+                  <a target="_blank" href="https://www.instagram.com/rd_0.9/"
+                    >Muhammad Ardi Setiawan</a
+                  >
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    href="https://www.instagram.com/malafilla_/"
+                    >Mala Fillatunnida</a
+                  >
+                </li>
+                <li>
+                  <a target="_blank" href="https://www.instagram.com/fzatsdv/"
+                    >Faza Tsania Devi</a
+                  >
+                </li>
               </ul>
             </div>
             <div class="col-lg-3 item social">
@@ -133,20 +163,34 @@
             </div>
           </div>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
 export default {
   name: "App",
-  computed: {
-    logout() {
-      return JSON.parse(sessionStorage.getItem("USER_DATA"));
-    },
+  data() {
+    return {
+      roles: "",
+      logout: {},
+    };
   },
+  mounted() {
+    this.getUser();
+  },
+  // computed: {
+  //   logout() {
+  //     return JSON.parse(sessionStorage.getItem("USER_DATA"));
+  //   },
+  // },
   methods: {
+    getUser() {
+      let user = JSON.parse(sessionStorage.getItem("USER_DATA"));
+      this.roles = user === null ? "" : user.role;
+      this.logout = user;
+    },
     out() {
       sessionStorage.clear();
     },

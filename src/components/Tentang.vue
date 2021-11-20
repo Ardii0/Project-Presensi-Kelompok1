@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="appa">
     <h1>Fakultas Teknik dan Kejuruan Kampus Binusa</h1>
     <br />
     <h3>Sekilas Tentang Fakultas Teknik dan Kejuruan</h3>
@@ -236,7 +236,7 @@ export default {
 </script>
 
 <style scoped>
-.app {
+.appa {
   padding: 20px;
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="contact">
     <div class="p1">
       <h1 style="color: maroon">BEKASI</h1>
       <p>
@@ -119,8 +119,8 @@
   </div>
 </template>
 
-<style scoped>
-.app {
+<style>
+.contact {
   margin-top: 20px;
   margin-left: 10px;
   padding-left: 10px;

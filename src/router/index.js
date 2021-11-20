@@ -15,6 +15,8 @@ import InfoDosen from "@/components/InfoDosen.vue"
 import PresensiDosen from "@/components/PresensiDosen.vue"
 import StatistikDosen from "@/components/StatistikDosen.vue"
 import InfoAdmin from "@/components/InfoAdmin.vue"
+import DataDosen from "@/components/DataDosen.vue"
+import DataMahasiswa from "@/components/DataMahasiswa.vue"
 
 Vue.use(Router)
 
@@ -98,6 +100,16 @@ function configRoutes() {
             path: "/StatistikDosen",
             name: "StatistikDosen",
             component: StatistikDosen
+        },
+        {
+            path: "/DataDosen",
+            name: "DataDosen",
+            component: DataDosen
+        },
+        {
+            path: "/DataMahasiswa",
+            name: "DataMahasiswa",
+            component: DataMahasiswa
         }
     ]
 }
